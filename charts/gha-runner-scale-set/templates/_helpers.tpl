@@ -113,6 +113,12 @@ volumeMounts:
     mountPath: /var/run
   - name: dind-externals
     mountPath: /home/runner/externals
+
+  {{- if .Values.dindDocker }}
+  - name: dind
+    volumeMounts:
+      - name: docker-config
+  {{- end }}
 {{- end }}
 
 {{- define "gha-runner-scale-set.dind-volume" -}}
