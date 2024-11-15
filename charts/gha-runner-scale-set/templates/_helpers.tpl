@@ -115,9 +115,9 @@ volumeMounts:
     mountPath: /home/runner/externals
 
   {{- if .Values.dindDocker }}
-  - name: dind
-    volumeMounts:
-      - name: docker-config
+  - name: docker-config
+    mountPath: /etc/docker/config.json
+    subPath: .dockerconfigjson
   {{- end }}
 {{- end }}
 
